@@ -1,25 +1,86 @@
-print("1= Add")
-print("2= Subtract")
-print("3= Multiply")
-print("4= Divide")
-option = int(input("Choose an operation:"))
-result = 0
+def task():
 
-if (option in [1,2,3,4]):
-    num1 = int(input("Enter first number: "))
-    num2 = int(input("Enter second number: "))
+    tasks = []  # Initialize an empty list to store tasks
 
-    if(option == 1):
-        result = num1+num2
-    elif(option == 2):
-        result = num1 - num2
-    elif(option == 3):
-        result = num1 * num2
-    elif(option == 4):
-        result = num1 // num2
-    
+    print("----WELCOME TO THE TASK MANAGEMENT APP----")
 
-else:
-    print("Invalid operation")
+    total_task = int(input("Enter how many tasks you want to add = "))
 
-print("the result of the operation is {}". format(result))
+    for i in range(1, total_task + 1):
+
+        task_name = input(f"Enter task {i} = ")
+
+        tasks.append(task_name)
+
+    print(f"Today's tasks are\n{tasks}")
+
+   
+
+    while True:
+
+        try:
+
+            operation = int(input("Enter \n1-Add\n2-Update\n3-Delete\n4-View\n5-Exit/Stop\n"))
+
+            if operation == 1:
+
+                add = input("Enter task you want to add = ")
+
+                tasks.append(add)
+
+                print(f"Task '{add}' has been successfully added.")
+
+            elif operation == 2:
+
+                updated_val = input("Enter the task name you want to update = ")
+
+                if updated_val in tasks:
+
+                    up = input("Enter new task = ")
+
+                    ind = tasks.index(updated_val)
+
+                    tasks[ind] = up
+
+                    print(f"Updated task '{updated_val}' to '{up}'.")
+
+                else:
+
+                    print("Task not found.")
+
+            elif operation == 3:
+
+                del_val = input("Which task you want to delete = ")
+
+                if del_val in tasks:
+
+                    ind = tasks.index(del_val)
+
+                    del tasks[ind]
+
+                    print(f"Task '{del_val}' has been deleted.")
+
+                else:
+
+                    print("Task not found.")
+
+            elif operation == 4:
+
+                print(f"Total tasks = {tasks}")
+
+            elif operation == 5:
+
+                print("Closing the program....")
+
+                break
+
+            else:
+
+                print("Invalid Input. Please enter a number from 1 to 5.")
+
+        except ValueError:
+
+            print("Invalid Input. Please enter a valid number.")
+
+
+task()
